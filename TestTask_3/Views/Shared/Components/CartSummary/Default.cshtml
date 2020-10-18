@@ -2,16 +2,14 @@
 
 
 
-<div class="navbar-nav mr-auto">
-    @if(Model.Lines.Count() > 0)
-    {
-        <small class="navbar-text mr-auto">
-            <b>Your cart: </b>
-            @Model.Lines.Sum(x => x.Quantity) items(s)
-            @Model.ComputeTotalValue().ToString("c")
-        </small>
-    }
-<a class="btn btn-default" asp-controller="Cart" asp-action="Index" asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-    <i class="fa fa-shopping-cart"></i>
-</a>
+
+<div>
+    <span style="display:inline; font-size:15px;margin-right:15px; color:#FFFFFF">
+        <b>Your cart: </b>
+        @Model.Lines.Sum(x => x.Quantity) items(s)
+        @Model.ComputeTotalValue().ToString("c")
+    </span>
+    <a class="btn btn-outline-primary btn-sm my-1" asp-controller="Cart" asp-action="Index" asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        Cart
+    </a>
 </div>
