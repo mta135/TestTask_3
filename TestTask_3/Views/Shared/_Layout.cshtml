@@ -6,9 +6,13 @@
     <title>FlowerSaleStore</title>
     <environment include="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+      
+        <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+
     </environment>
     <environment exclude="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        
     </environment>
 </head>
 
@@ -16,12 +20,37 @@
 
 <body>
     <div class="navbar navbar-inverse bg-inverse navbar-dark bg-dark" role="navigation">
-        <a class="navbar-brand" href="#">FlowerSalesStore</a>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <a class="navbar-brand" href="#">FlowerSalesStore</a>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+         
+          
+
+            @*<div class="col-8 text-right">
+
+            </div>*@
+        </div>
+
+     
     </div>
+
+
+
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
             @await Component.InvokeAsync("NavigationMenu")
         </div>
+
+
+
+
+
         <div class="col-9">
             @RenderBody()
         </div>

@@ -23,7 +23,7 @@ namespace FlowerSaleStore.WebUI.Controllers
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
-                .Where(p => p.Category.Name == category || string.IsNullOrEmpty(category))
+                .Where(p => p.Category.Name == category ||  string.IsNullOrEmpty(category))
                 .OrderBy(p => p.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize),
@@ -32,9 +32,8 @@ namespace FlowerSaleStore.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    // TotalItems = repository.Products.Count()
-                    TotalItems = category == null ? repository.Products.Count() :
-                   repository.Products.Where(e => e.Category.Name == category).Count()
+                    //TotalItems = repository.Products.Count()
+                   TotalItems = category == null ? repository.Products.Count() : repository.Products.Where(e => e.Category.Name == category).Count(),
                 },
                 CurrentCategory = category
             };

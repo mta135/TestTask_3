@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Data;
 using FlowerSaleStore.WebUI.Infrastructure;
+using FlowerSaleStore.WebUI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,11 +27,16 @@ namespace TestTask_3
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => options.EnableEndpointRouting = false);
-
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
+            services.AddTransient<IOrder, OrderRepository>();
             services.AddDbContext<FlowerSaleStoreDbContext>(options => options.UseSqlServer(Configuration["Data:FlowerSaleStore:ConnectionString"]));
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
 
@@ -39,20 +45,28 @@ namespace TestTask_3
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc(routes =>
             {
-
                 routes.MapRoute(
                     name: null,
                     template: "{category}/Page{page:int}",
-                    defaults: new { controller = "Product", action = "List" }
-                    );
+                    defaults: new 
+                    {
+                        controller = "Product",
+                        action = "List"
+                    });
 
                 routes.MapRoute(
                     name: null,
                     template: "Page{page:int}",
-                    defaults: new { controller = "Product", action = "List", page = 1 }
-                    );
+                    defaults: new
+                    {
+                        controller = "Product",
+                        action = "List",
+                        page = 1
+                    }); 
+
 
                 routes.MapRoute(
                     name: null,
@@ -62,10 +76,7 @@ namespace TestTask_3
                         controller = "Product",
                         action = "List",
                         page = 1
-                    }
-
-                    );
-
+                    });
                 routes.MapRoute(
                     name:null,
                     template:"",
@@ -75,18 +86,7 @@ namespace TestTask_3
                         action = "List",
                         page = 1
                     });
-
-
                 routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-
-                //routes.MapRoute(
-                //    name: null,
-                //    template: "Products/Pages{page}",
-                //    defaults: new { Controller = "Product", action = "List" });
-
-                //routes.MapRoute(
-                //name: "default",
-                //template: "{controller=Product}/{action=List}/{id?}");
             });
         }
     }
