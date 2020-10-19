@@ -15,8 +15,6 @@ namespace FlowerSaleStore.WebUI.Components
         {
             this.repository = repository;
         }
-
-
         public IViewComponentResult Invoke()
         {
             ViewBag.SelectedCategory = RouteData?.Values["category"];
@@ -26,10 +24,5 @@ namespace FlowerSaleStore.WebUI.Components
                 categoryNameList.Add(category.Name);
             return View(categoryNameList);
         }
-
-        //public string Invoke()
-        //{
-        //    return "Hello from the Nav View Components";
-        //}
     }
 }
