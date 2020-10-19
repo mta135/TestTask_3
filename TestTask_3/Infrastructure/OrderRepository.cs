@@ -1,6 +1,9 @@
 ﻿using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Data;
 using FlowerSalesStore.Domain.Entities;
+using FlowerSalesStore.Domain.ViewModels;
+using FlowerSaleStore.WebUI.ViewModels;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,14 +28,28 @@ namespace FlowerSaleStore.WebUI.Infrastructure
             }
         }
 
-        public void SaveOrder(Order order)
+        public void SaveOrder(List<OrderViewModel> orderViewModelsList)
         {
-            context.AttachRange(order.Lines.Select(l => l.Product));
-            if (order.Id == 0)
+            try
             {
-                context.Orders.Add(order);
+                List<Order> ordersList = new List<Order>();
+                foreach (var item in orderViewModelsList)
+                {
+                    Order order = new Order();
+                    order.ProductId = item.ProductId;
+                    order.Quantity = item.Quantity;
+                    order.Price = item.Quantity * item.Price;
+                    ordersList.Add(order);
+                }
+                context.Orders.AddRange(ordersList);
+                context.SaveChanges();
             }
-            context.SaveChanges();
+            catch (Exception ex)
+            {
+                string exception = ex.Message;
+            }
         }
     }
 }
+
+
