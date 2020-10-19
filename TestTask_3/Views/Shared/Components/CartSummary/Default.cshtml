@@ -1,15 +1,15 @@
 ﻿@model Cart
 
-
-
-
 <div>
-    <span style="display:inline; font-size:15px;margin-right:15px; color:#FFFFFF">
-        <b>Your cart: </b>
-        @Model.Lines.Sum(x => x.Quantity) items(s)
-        @Model.ComputeTotalValue().ToString("c")
-    </span>
-    <a class="btn btn-outline-primary btn-sm my-1" asp-controller="Cart" asp-action="Index" asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
-        Cart
-    </a>
+    @*@if (Model.Lines.Count() != 0)
+    {*@
+        <span style="display:inline; font-size:15px;margin-right:15px; color:#FFFFFF">
+            <b>Your cart: </b>
+            @Model.Lines.Sum(x => x.Quantity) items(s)
+            @Model.ComputeTotalValue().ToString("c")
+        </span>
+        <a class="btn btn-outline-primary btn-sm my-1" asp-controller="Cart" asp-action="Index" asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+            Cart
+        </a>
+    @*}*@
 </div>
