@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Entities;
+using FlowerSalesStore.Domain.ViewModels;
 using FlowerSaleStore.WebUI.Models;
+using FlowerSaleStore.WebUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -37,8 +39,22 @@ namespace FlowerSaleStore.WebUI.Controllers
             }
             if (ModelState.IsValid)
             {
+                List<OrderViewModel> orderViewModelsList = new List<OrderViewModel>();
                 order.Lines = cart.Lines.ToList();
-                repository.SaveOrder(order);
+                var orderItem = cart.Lines.ToList(); // for testing latter need to remove
+                
+                foreach(var item in order.Lines)
+                {
+                    var value = item.Id;
+                    OrderViewModel orderViewModel = new OrderViewModel
+                    {
+                        ProductId = item.Product.Id,
+                        Quantity = item.Quantity,
+                        Price = item.Price
+                    };
+                    orderViewModelsList.Add(orderViewModel);
+                }
+                repository.SaveOrder(orderViewModelsList);
                 return RedirectToAction(nameof(Completed));
             }
             else
