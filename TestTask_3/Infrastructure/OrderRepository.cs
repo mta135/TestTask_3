@@ -35,10 +35,12 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                 List<Order> ordersList = new List<Order>();
                 foreach (var item in orderViewModelsList)
                 {
-                    Order order = new Order();
-                    order.ProductId = item.ProductId;
-                    order.Quantity = item.Quantity;
-                    order.Price = item.Quantity * item.Price;
+                    Order order = new Order
+                    {
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        Price = item.Quantity * item.Price
+                    };
                     ordersList.Add(order);
                 }
                 context.Orders.AddRange(ordersList);
