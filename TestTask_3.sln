@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerSaleStore.WebUI", "TestTask_3\FlowerSaleStore.WebUI.csproj", "{E5EB3792-61C9-4264-BA2C-B578E3BC643C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerSalesStore.Domain", "FlowerSalesStore\FlowerSalesStore.Domain.csproj", "{B0C49F06-DA8B-4AFE-9B2E-024097DA0824}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5EB3792-61C9-4264-BA2C-B578E3BC643C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5EB3792-61C9-4264-BA2C-B578E3BC643C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5EB3792-61C9-4264-BA2C-B578E3BC643C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5EB3792-61C9-4264-BA2C-B578E3BC643C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0C49F06-DA8B-4AFE-9B2E-024097DA0824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0C49F06-DA8B-4AFE-9B2E-024097DA0824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0C49F06-DA8B-4AFE-9B2E-024097DA0824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0C49F06-DA8B-4AFE-9B2E-024097DA0824}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4037D914-B68F-4590-8482-87681AF9C95C}
+	EndGlobalSection
+EndGlobal
