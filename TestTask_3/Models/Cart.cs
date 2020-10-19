@@ -14,12 +14,14 @@ namespace FlowerSaleStore.WebUI.Models
         public virtual void AddItem(Product product, int quantity)
         {
             CartLine line = lineCollection.Where(p => p.Product.Id == product.Id).FirstOrDefault();
-            if(line == null)
+            if (line == null)
             {
                 lineCollection.Add(new CartLine
                 {
                     Product = product,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    Price = product.Price,
+                    ProductId = product.Id
                 });
             }
             else
