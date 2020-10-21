@@ -16,9 +16,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="/Product/List">FlowerSalesStore</a>
-
         <a class="btn btn-sm btn-primary" style="margin-right:60%" asp-controller="Account" asp-action="Login">Login</a>
-  
         @await Component.InvokeAsync("CartSummary")
     </nav>
     <div class="row m-1 p-1">
