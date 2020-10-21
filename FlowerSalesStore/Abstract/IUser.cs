@@ -10,5 +10,8 @@ namespace FlowerSalesStore.Domain.Abstract
         IEnumerable<User> Users { get; }
         void InsertUser(User user);
         User FindUserByLoginAndPasswword(string login, string password);
+
+
+        // test
     }
 }
