@@ -18,8 +18,4 @@
     <ProjectReference Include="..\FlowerSalesStore\FlowerSalesStore.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Mails\" />
-  </ItemGroup>
-
 </Project>
