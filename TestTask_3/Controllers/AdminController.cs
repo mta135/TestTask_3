@@ -39,9 +39,6 @@ namespace FlowerSaleStore.WebUI.Controllers
             repository.SaveProduct(product);
             TempData["message"] = $"{product.Name} has been saved";    
             return RedirectToAction("Index");
-          
-                // there is something wrong with the data values
-               // return View(product);  
         }
 
         [HttpGet]
@@ -56,7 +53,7 @@ namespace FlowerSaleStore.WebUI.Controllers
         {
             repository.SaveProduct(productViewModel);
 
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
 
