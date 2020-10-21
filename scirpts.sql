@@ -47,3 +47,11 @@ INSERT INTO Products (CategoryId, NAME, Description, Price, Image)
                   (N'Chess', N'')
   
   ALTER TABLE Products ADD FOREIGN KEY (CategoryId) REFERENCES Categories(Id); ?
+  
+  ALTER TABLE Orders ADD ProductId INT null
+  ALTER TABLE Orders ADD Quantity INT NULL
+  ALTER TABLE Orders ADD Price DECIMAL(18, 2) null
+  
+  ALTER TABLE Users  ADD IsAdmin BIT
+  ALTER TABLE Products ADD FilePath NVARCHAR(150) NULL
+  ALTER TABLE Users ADD Email NVARCHAR(50)  NULL

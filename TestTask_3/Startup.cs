@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Threading.Tasks;
 using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Data;
 using FlowerSaleStore.WebUI.Infrastructure;
@@ -13,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace TestTask_3
 {
@@ -30,7 +24,10 @@ namespace TestTask_3
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategory, CategoryRepository>();
             services.AddTransient<IOrder, OrderRepository>();
+            services.AddTransient<IUser, UserRepository>();
             services.AddDbContext<FlowerSaleStoreDbContext>(options => options.UseSqlServer(Configuration["Data:FlowerSaleStore:ConnectionString"]));
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
 
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -46,12 +43,13 @@ namespace TestTask_3
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
+            //app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: null,
                     template: "{category}/Page{page:int}",
-                    defaults: new 
+                    defaults: new
                     {
                         controller = "Product",
                         action = "List"

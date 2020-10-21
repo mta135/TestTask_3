@@ -6,14 +6,23 @@
     <title>@ViewBag.Title</title>
     <environment include="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     </environment>
     <environment exclude="Development">
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     </environment>
 
+    <style>
+        .input-validation-error {
+            border-color: red;
+            background-color: #fee;
+        }
+    </style>
+
 </head>
 <body>
-
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">FlowerSalesStore</a>
     </nav>
@@ -36,4 +45,13 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     </environment>
 </body>
+
+
+
+@if (IsSectionDefined("Scripts"))
+{
+    @RenderSection("Scripts", required: true)
+}
+
+
 </html>

@@ -6,6 +6,7 @@ using FlowerSalesStore.Domain.Entities;
 using FlowerSaleStore.WebUI.Models;
 using FlowerSaleStore.WebUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using FlowerSaleStore.WebUI.Infrastructure;
 
 namespace FlowerSaleStore.WebUI.Controllers
 {
@@ -20,6 +21,12 @@ namespace FlowerSaleStore.WebUI.Controllers
 
         public IActionResult List(string category, int page = 1)
         {
+            User user = HttpContext.Session.GetComplexData<User>("User");
+            if(user != null)
+            {
+                ViewBag.IsAdmin = user.IsAdmin;
+            }
+          
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products

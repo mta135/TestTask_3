@@ -1,0 +1,43 @@
+﻿@model User
+@{
+    ViewBag.Title = "Log In";
+    Layout = "_AdminLayout";
+}
+
+
+
+<div class="container">
+    <div class="row" style="margin-top:4%">
+        <div class="sm-3"></div>
+        <div class="col-sm-6">
+
+            <div class="card border border-primary">
+                <div class="card-body">
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                    <form asp-action="Login" asp-controller="Account" method="post">
+                        <input type="hidden" asp-for="ReturnUrl" />
+                        <!--<div class="form-group">
+                            <label asp-for="NAME"></label>-->
+                            @*<div><span asp-validation-for="NAME" class="text-danger"></span></div>*@
+                            <!--<input asp-for="NAME" class="form-control" />
+                        </div>-->
+
+                        <div class="form-group">
+                            <label asp-for="Login"></label>
+                            <div><span asp-validation-for="Login" class="text-danger"></span></div>
+                            <input asp-for="Login" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <div><span asp-validation-for="Password" class="text-danger"></span></div>
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

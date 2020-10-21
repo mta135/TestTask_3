@@ -2,18 +2,30 @@
 
 <div class="card m-1 border border-primary">
     <div class="card-body">
-        <h3><strong> @Model.Name</strong></h3>
-        <span class="badge badge-dark" style="float:right; font-size:20px;">
-            <small>@Model.Price.ToString("c")</small>
-        </span>
-        <div class="card-text" style="font-size:20px">@Model.Description</div>
-        <hr />
-        <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-            <span class="card-text p1">
-                <button type="submit" class="btn btn-primary btn-sm float-right">Add To Cart</button>
+        @{
+            //var FilePath = "~/Files/" + @Model.FilePath;
+            var FilePath = "~/Files/" + (Model.FilePath ?? "noimage.png");
+            <div class="row">
+                <div class="col-sm-1">
+                    <img src="@FilePath" style="height:30px; width:30px" asp-append-version="true" />
+                </div>
+                <div class="col-sm-3" style="margin-right:20px">
+                    <h5><strong> @Model.Name</strong></h5>
+                </div>
+            </div>
+
+            <span class="badge badge-dark" style="float:right; font-size:20px;">
+                <small>@Model.Price.ToString("c")</small>
             </span>
-        </form>
+            <div class="card-text" style="font-size:20px">@Model.Description</div>
+            <hr />
+            <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <span class="card-text p1">
+                    <button type="submit" class="btn btn-primary btn-sm float-right">Add To Cart</button>
+                </span>
+            </form>
+        }
     </div>
 </div>

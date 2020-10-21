@@ -39,7 +39,8 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                     {
                         ProductId = item.ProductId,
                         Quantity = item.Quantity,
-                        Price = item.Quantity * item.Price
+                        Price = item.Quantity * item.Price,
+                        UserId = item.UserId
                     };
                     ordersList.Add(order);
                 }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace FlowerSalesStore.Domain.Entities
@@ -11,9 +14,14 @@ namespace FlowerSalesStore.Domain.Entities
 
         public string Name { get; set; }
         public string Description { get; set; }
+
+        [Range(0.01, double.MaxValue)]
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
         public string Image { get; set; }
 
         public Category Category { get; set; }
+
+        public string FilePath { get; set; }
     }
 }

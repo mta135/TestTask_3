@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Entities;
-using Microsoft.AspNetCore.Authentication;
+using FlowerSalesStore.Domain.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerSaleStore.WebUI.Controllers
-{
+{    
     public class AdminController : Controller
     {
         private readonly IProductRepository repository;
@@ -42,14 +41,24 @@ namespace FlowerSaleStore.WebUI.Controllers
             return RedirectToAction("Index");
           
                 // there is something wrong with the data values
-               // return View(product);
-           
+               // return View(product);  
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
-            return View("Edit", new Product());
+            return View(new ProductViewModel());
         }
+
+        [HttpPost]
+       
+        public IActionResult Create(ProductViewModel productViewModel)
+        {
+            repository.SaveProduct(productViewModel);
+
+            return View();
+        }
+
 
         [HttpPost]
         public IActionResult Delete(int id)
