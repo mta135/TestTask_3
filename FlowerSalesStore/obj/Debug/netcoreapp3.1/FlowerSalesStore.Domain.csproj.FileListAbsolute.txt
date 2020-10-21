@@ -3,6 +3,7 @@ D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\bin\Debug\netcoreapp3.1\Flower
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\bin\Debug\netcoreapp3.1\FlowerSalesStore.Domain.runtimeconfig.dev.json
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\bin\Debug\netcoreapp3.1\FlowerSalesStore.Domain.dll
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\bin\Debug\netcoreapp3.1\FlowerSalesStore.Domain.pdb
+D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\obj\Debug\netcoreapp3.1\FlowerSalesStore.Domain.csprojAssemblyReference.cache
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\obj\Debug\netcoreapp3.1\FlowerSalesStore.Domain.AssemblyInfoInputs.cache
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\obj\Debug\netcoreapp3.1\FlowerSalesStore.Domain.AssemblyInfo.cs
 D:\_WORKPROJECTS_TEST\TestTask_3\FlowerSalesStore\obj\Debug\netcoreapp3.1\FlowerSalesStore.Domain.csproj.CoreCompileInputs.cache
