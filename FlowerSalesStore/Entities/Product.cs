@@ -15,8 +15,6 @@ namespace FlowerSalesStore.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-        [Range(0.01, double.MaxValue)]
-        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
         public string Image { get; set; }
 
