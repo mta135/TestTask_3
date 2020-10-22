@@ -1,12 +1,15 @@
-﻿
-@model Product
+﻿@model Product
+
+
+
+
 @{
     ViewBag.Title = "Edit Product";
     Layout = "_AdminLayout";
 }
 
 <div class="container">
-    <form asp-action="Edit" method="post">
+    <form enctype="multipart/form-data" asp-action="Edit" method="post">
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
             <label asp-for="Name"></label>
@@ -18,7 +21,7 @@
         </div>
         <div class="form-group">
             <label asp-for="Category"></label>
-            <input asp-for="Category.Name" class="form-control"readonly />
+            <input asp-for="Category.Name" class="form-control" readonly />
         </div>
         <div class="form-group">
             <label asp-for="Price"></label>
