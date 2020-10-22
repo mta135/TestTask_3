@@ -3,15 +3,14 @@ using System.Linq;
 using FlowerSalesStore.Domain.Abstract;
 using FlowerSalesStore.Domain.Entities;
 using FlowerSalesStore.Domain.ViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlowerSaleStore.WebUI.Controllers
-{    
+{
     public class AdminController : Controller
     {
         private readonly IProductRepository repository;
+     
         public AdminController(IProductRepository repository)
         {
             this.repository = repository;
@@ -20,8 +19,7 @@ namespace FlowerSaleStore.WebUI.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            IEnumerable<Product> model = repository.Products;
-            // ProductViewModel model // it has to be done
+            List<ProductViewModel> model = MapProductToProductViewModel.Instance.ProducToProductViewModel(repository.Products);
             return View(model);
         }
 
@@ -37,7 +35,7 @@ namespace FlowerSaleStore.WebUI.Controllers
         public IActionResult Edit(Product product)
         {
             repository.SaveProduct(product);
-            TempData["message"] = $"{product.Name} has been saved";    
+            TempData["message"] = $"{product.Name} has been saved";
             return RedirectToAction("Index");
         }
 
@@ -48,15 +46,11 @@ namespace FlowerSaleStore.WebUI.Controllers
         }
 
         [HttpPost]
-       
         public IActionResult Create(ProductViewModel productViewModel)
         {
             repository.SaveProduct(productViewModel);
-
             return RedirectToAction(nameof(Index));
         }
-
-
         [HttpPost]
         public IActionResult Delete(int id)
         {
@@ -68,6 +62,24 @@ namespace FlowerSaleStore.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        //[HttpGet]
+        //public IActionResult EditCategory(int CategoryId)
+        //{
+        //    Category category = categoryRepository.Categories.Where(c => c.Id == CategoryId).FirstOrDefault();
+        //    CategoryViewModel categoryView =
+        //        MapCategoryToCategoryViewModel.Instance.CategoryToCategoryVIewModel(category);
+        //    return View(categoryView);
+        //}
 
+
+        //[HttpPost]
+        //public IActionResult EditCategory(CategoryViewModel categoryViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        categoryRepository.SaveCategory(categoryViewModel);
+        //    }
+        //    return RedirectToAction("Product/List");
+        //}
     }
 }
