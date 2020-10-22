@@ -30,9 +30,6 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                 return context.Products.Include(p => p.Category);
             }
         }
-
-
-
         public void SaveProduct(Product product)
         {
             try
@@ -49,7 +46,6 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                         dbEntry.Name = product.Name;
                         dbEntry.Description = product.Description;
                         dbEntry.Price = product.Price;
-                        //dbEntry.Category = product.Category;
                     }
                 }
                 context.SaveChanges();
@@ -59,10 +55,6 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                 string exceptions = ex.ToString();
             }
         }
-
-
-
-
         public Product DeleteProduct(int productID)
         {
             Product dbEntry = context.Products.FirstOrDefault(p => p.Id == productID);
@@ -80,7 +72,6 @@ namespace FlowerSaleStore.WebUI.Infrastructure
             {
                 Product product = new Product();
                 Category category = new Category();
-
                 product.Name = productViewModel.Name;
                 product.Description = productViewModel.Description;
                 product.Price = productViewModel.Price;
@@ -95,7 +86,7 @@ namespace FlowerSaleStore.WebUI.Infrastructure
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     productViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
-                product.FilePath = uniqueFileName;
+                product.Image = uniqueFileName;
                 context.Products.Add(product);
                 context.SaveChanges();
             }
