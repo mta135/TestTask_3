@@ -4,12 +4,12 @@
    ,NAME NVARCHAR(50) NOT NULL 
    ,Description NVARCHAR(100) NOT NULL
    ,Price DECIMAL(18,2) NULL  
-   ,Image NVARCHAR(25) null
+   ,Image NVARCHAR(150) null
   )
   
   CREATE TABLE Categories (
   Id INT IDENTITY (1, 1) PRIMARY KEY
- ,NAME NVARCHAR(50) NOT NULL
+ ,NAME NVARCHAR(50) NULL
  ,Description NVARCHAR(100) NOT NULL
 )
 
