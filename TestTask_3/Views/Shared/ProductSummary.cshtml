@@ -3,8 +3,7 @@
 <div class="card m-1 border border-primary">
     <div class="card-body">
         @{
-            //var FilePath = "~/Files/" + @Model.FilePath;
-            var FilePath = "~/Files/" + (Model.FilePath ?? "noimage.png");
+            var FilePath = "~/Files/" + (Model.Image ?? "noimage.png");
             <div class="row">
                 <div class="col-sm-1">
                     <img src="@FilePath" style="height:30px; width:30px" asp-append-version="true" />
