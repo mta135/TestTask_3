@@ -47,6 +47,12 @@ namespace TestTask_3
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+
+                    name: "default",
+                    template: "{controller=Account}/{action=Login}"
+                    );
+
+                routes.MapRoute(
                     name: null,
                     template: "{category}/Page{page:int}",
                     defaults: new
@@ -54,6 +60,8 @@ namespace TestTask_3
                         controller = "Product",
                         action = "List"
                     });
+
+
 
                 routes.MapRoute(
                     name: null,
